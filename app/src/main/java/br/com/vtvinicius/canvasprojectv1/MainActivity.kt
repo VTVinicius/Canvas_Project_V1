@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson1.BasicShapes
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson2.BallClickerGame
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson3.BasicCanvasText
 import br.com.vtvinicius.canvasprojectv1.ui.theme.ApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,22 +20,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ApplicationTheme {
-                BallClickerGame()
+                BasicCanvasText()
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ApplicationTheme {
-
     }
 }
