@@ -19,8 +19,6 @@ fun WeightPickerScreen() {
         mutableStateOf(80)
     }
 
-
-
     Column(Modifier.fillMaxSize()) {
 
         Row(
@@ -54,7 +52,7 @@ fun WeightPickerScreen() {
                 )
                 drawText(
                     "Kg",
-                    this.clipBounds.centerX() + 70f.toFloat(),
+                    this.clipBounds.centerX() + 90f.toFloat(),
                     this.clipBounds.exactCenterY(),
                     Paint().apply {
                         color = Color.GREEN

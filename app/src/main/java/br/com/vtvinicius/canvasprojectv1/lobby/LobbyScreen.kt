@@ -1,11 +1,10 @@
 package br.com.vtvinicius.canvasprojectv1.lobby
 
 import android.annotation.SuppressLint
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
@@ -13,15 +12,21 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LobbyScreen(navController: NavController) {
 
+
+    BackHandler() {
+        // FAZ O BOTÃO DE VOLTAR NÃO FECHAR O APP
+    }
+
     Scaffold(
         content = {
-
 
             Column(
                 Modifier
@@ -30,24 +35,38 @@ fun LobbyScreen(navController: NavController) {
                         orientation = Orientation.Vertical,
                         state = rememberScrollState()
                     ),
-                verticalArrangement = Arrangement.SpaceEvenly,
+                verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+                Spacer(modifier = Modifier.height(24.dp))
 
-                Text(text = "Seleciona a aula de Canvas")
+                Text(text = "Seleciona a aula de Canvas", fontSize = 24.sp)
+
+                Spacer(modifier = Modifier.height(24.dp))
 
                 Button(onClick = { navController.navigate("lesson_1") }) {
                     Text(text = "Aula 1")
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
                 Button(onClick = { navController.navigate("lesson_2") }) {
                     Text(text = "Aula 2")
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
                 Button(onClick = { navController.navigate("lesson_3") }) {
                     Text(text = "Aula 3")
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
                 Button(onClick = { navController.navigate("lesson_4") }) {
                     Text(text = "Aula 4")
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
 
             }
 
