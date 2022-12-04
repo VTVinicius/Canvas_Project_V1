@@ -2,11 +2,13 @@ package br.com.vtvinicius.canvasprojectv1.lessons.lesson2
 
 
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.border
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -32,8 +34,10 @@ fun BallClickerGame() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .border(1.dp, Color.Black)
                 .padding(10.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = "Points: $points",

@@ -6,7 +6,6 @@ import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.Button
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import br.com.vtvinicius.canvasprojectv1.ui.components.DefaultButton
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -24,7 +24,6 @@ fun LobbyScreen(navController: NavController) {
     BackHandler() {
         // FAZ O BOTÃO DE VOLTAR NÃO FECHAR O APP
     }
-
     Scaffold(
         content = {
 
@@ -44,33 +43,22 @@ fun LobbyScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Button(onClick = { navController.navigate("lesson_1") }) {
-                    Text(text = "Aula 1")
-                }
+                DefaultButton(onClick = { navController.navigate("lesson_1") }, text = "Aula 1")
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Button(onClick = { navController.navigate("lesson_2") }) {
-                    Text(text = "Aula 2")
-                }
+                DefaultButton(onClick = { navController.navigate("lesson_2") }, text = "Aula 2")
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Button(onClick = { navController.navigate("lesson_3") }) {
-                    Text(text = "Aula 3")
-                }
+                DefaultButton(onClick = { navController.navigate("lesson_3") }, text = "Aula 3")
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                Button(onClick = { navController.navigate("lesson_4") }) {
-                    Text(text = "Aula 4")
-                }
+                DefaultButton(onClick = { navController.navigate("lesson_4") }, text = "Aula 4")
 
                 Spacer(modifier = Modifier.height(24.dp))
-
             }
-
-
         }
     )
 }

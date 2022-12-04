@@ -46,17 +46,17 @@ fun WeightPickerScreen() {
                     this.clipBounds.exactCenterY(),
                     Paint().apply {
                         color = Color.BLACK
-                        textSize = 100f
+                        textSize = 150f
                         textAlign = Paint.Align.CENTER
                     },
                 )
                 drawText(
                     "Kg",
-                    this.clipBounds.centerX() + 90f.toFloat(),
+                    this.clipBounds.centerX() + 150f.toFloat(),
                     this.clipBounds.exactCenterY(),
                     Paint().apply {
                         color = Color.GREEN
-                        textSize = 50f
+                        textSize = 70f
                     },
                 )
             }
