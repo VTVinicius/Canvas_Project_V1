@@ -3,6 +3,7 @@ package br.com.vtvinicius.canvasprojectv1
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson5.ClockScreen
 import br.com.vtvinicius.canvasprojectv1.navigation.LessonsNavigationController
 import br.com.vtvinicius.canvasprojectv1.ui.theme.ApplicationTheme
 
@@ -11,7 +12,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             ApplicationTheme {
-                LessonsNavigationController()
+                ClockScreen()
 
             }
         }
