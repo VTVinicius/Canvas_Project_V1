@@ -9,6 +9,8 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson1.BasicShapes
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson2.BallClickerGame
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson3.BasicCanvasText
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson4.WeightPickerScreen
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson5.ClockScreen
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson6.ClockScreenResolved
 import br.com.vtvinicius.canvasprojectv1.lobby.LobbyScreen
 
 @Composable
@@ -35,6 +37,12 @@ fun LessonsNavigationController() {
         }
         composable("lesson_4") {
             WeightPickerScreen()
+        }
+        composable("lesson_5") {
+            ClockScreen()
+        }
+        composable("lesson_6") {
+            ClockScreenResolved()
         }
     }
 

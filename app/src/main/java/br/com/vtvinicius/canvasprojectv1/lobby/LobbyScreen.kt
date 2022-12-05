@@ -58,6 +58,14 @@ fun LobbyScreen(navController: NavController) {
                 DefaultButton(onClick = { navController.navigate("lesson_4") }, text = "Aula 4")
 
                 Spacer(modifier = Modifier.height(24.dp))
+
+                DefaultButton(onClick = { navController.navigate("lesson_5") }, text = "Exercicio 1")
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                DefaultButton(onClick = { navController.navigate("lesson_6") }, text = "Aula 5")
+
+                Spacer(modifier = Modifier.height(24.dp))
             }
         }
     )

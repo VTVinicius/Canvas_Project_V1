@@ -24,6 +24,9 @@ import kotlin.math.sin
 
 @Composable
 fun ClockExercise(
+    seconds: Float = 0f,
+    minutes: Float = 0f,
+    hours: Float = 0f,
     modifier: Modifier = Modifier,
     style: ScaleStyle2 = ScaleStyle2(),
 ) {
@@ -143,7 +146,7 @@ fun ClockExercise(
 
 
         drawContext.canvas.nativeCanvas.withRotation(
-            angle1,
+            degrees = seconds * (360f / 60f),
             circleCenter.x,
             circleCenter.y
         ) {
@@ -161,7 +164,7 @@ fun ClockExercise(
             )
         }
         drawContext.canvas.nativeCanvas.withRotation(
-            angle2,
+            degrees = hours * (360f / 12f),
             circleCenter.x,
             circleCenter.y
         ) {
@@ -179,7 +182,7 @@ fun ClockExercise(
             )
         }
         drawContext.canvas.nativeCanvas.withRotation(
-            angle3,
+            degrees = minutes * (360f / 60f),
             circleCenter.x,
             circleCenter.y
         ) {
