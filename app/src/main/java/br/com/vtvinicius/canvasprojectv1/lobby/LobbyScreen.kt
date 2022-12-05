@@ -2,10 +2,9 @@ package br.com.vtvinicius.canvasprojectv1.lobby
 
 import android.annotation.SuppressLint
 import androidx.activity.compose.BackHandler
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -24,15 +23,16 @@ fun LobbyScreen(navController: NavController) {
     BackHandler() {
         // FAZ O BOTÃO DE VOLTAR NÃO FECHAR O APP
     }
+
+    val scrollState = rememberScrollState()
     Scaffold(
         content = {
-
             Column(
+
                 Modifier
                     .fillMaxSize()
-                    .scrollable(
-                        orientation = Orientation.Vertical,
-                        state = rememberScrollState()
+                    .verticalScroll(
+                        scrollState
                     ),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -59,7 +59,10 @@ fun LobbyScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_5") }, text = "Exercicio 1")
+                DefaultButton(
+                    onClick = { navController.navigate("lesson_5") },
+                    text = "Exercicio 1"
+                )
 
                 Spacer(modifier = Modifier.height(24.dp))
 
@@ -68,6 +71,14 @@ fun LobbyScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 DefaultButton(onClick = { navController.navigate("lesson_7") }, text = "Aula 7")
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                DefaultButton(onClick = { navController.navigate("lesson_8") }, text = "Aula 8")
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                DefaultButton(onClick = { navController.navigate("lesson_8_1") }, text = "Aula 8.1")
 
                 Spacer(modifier = Modifier.height(24.dp))
             }

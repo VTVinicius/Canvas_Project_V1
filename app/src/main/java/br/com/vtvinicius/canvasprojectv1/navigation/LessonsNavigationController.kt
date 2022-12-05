@@ -12,6 +12,8 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson4.WeightPickerScreen
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson5.ClockScreen
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson6.ClockScreenResolved
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson7.ExamplePath
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.CubicPath
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.QuadraticPath
 import br.com.vtvinicius.canvasprojectv1.lobby.LobbyScreen
 
 @Composable
@@ -48,6 +50,12 @@ fun LessonsNavigationController() {
 
         composable("lesson_7") {
             ExamplePath()
+        }
+        composable("lesson_8") {
+            QuadraticPath()
+        }
+        composable("lesson_8_1") {
+            CubicPath()
         }
     }
 
