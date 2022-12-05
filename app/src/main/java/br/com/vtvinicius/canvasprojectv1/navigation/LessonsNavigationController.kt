@@ -14,6 +14,7 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson6.ClockScreenResolved
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson7.ExamplePath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.CubicPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.QuadraticPath
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson9.PathOperation
 import br.com.vtvinicius.canvasprojectv1.lobby.LobbyScreen
 
 @Composable
@@ -56,6 +57,9 @@ fun LessonsNavigationController() {
         }
         composable("lesson_8_1") {
             CubicPath()
+        }
+        composable("lesson_9") {
+            PathOperation()
         }
     }
 
