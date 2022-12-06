@@ -13,12 +13,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.EffectPath
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.LobbyBackground
 import br.com.vtvinicius.canvasprojectv1.ui.components.DefaultButton
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun LobbyScreen(navController: NavController) {
-
 
     BackHandler() {
         // FAZ O BOTÃO DE VOLTAR NÃO FECHAR O APP
@@ -37,6 +38,9 @@ fun LobbyScreen(navController: NavController) {
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
+
+                LobbyBackground()
+
                 Spacer(modifier = Modifier.height(24.dp))
 
                 Text(text = "Seleciona a aula de Canvas", fontSize = 24.sp)
