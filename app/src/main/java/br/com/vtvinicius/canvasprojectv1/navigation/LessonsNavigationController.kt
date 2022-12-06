@@ -6,6 +6,9 @@ import androidx.navigation.compose.composable
 
 import androidx.navigation.compose.rememberNavController
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson1.BasicShapes
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson10.AnimatedScreen
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson11.ClipPath
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.EffectPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson2.BallClickerGame
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson3.BasicCanvasText
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson4.WeightPickerScreen
@@ -60,6 +63,15 @@ fun LessonsNavigationController() {
         }
         composable("lesson_9") {
             PathOperation()
+        }
+        composable("lesson_10") {
+            AnimatedScreen()
+        }
+        composable("lesson_11") {
+            ClipPath()
+        }
+        composable("lesson_12") {
+            EffectPath()
         }
     }
 
