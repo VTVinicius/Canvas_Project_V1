@@ -9,6 +9,7 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson1.BasicShapes
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson10.AnimatedScreen
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson11.ClipPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.EffectPath
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson13.GenderScreen
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson2.BallClickerGame
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson3.BasicCanvasText
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson4.WeightPickerScreen
@@ -72,6 +73,9 @@ fun LessonsNavigationController() {
         }
         composable("lesson_12") {
             EffectPath()
+        }
+        composable("lesson_13") {
+            GenderScreen()
         }
     }
 

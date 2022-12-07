@@ -27,7 +27,7 @@ fun ClockScreen() {
         mutableStateOf(((milliseconds / 1000f) / 60) % 60f)
     }
     var hours by remember {
-        mutableStateOf((milliseconds / 1000f) / 360000f + 2.8f)
+        mutableStateOf((milliseconds / 1000f) / 360000f)
     }
 
     LaunchedEffect(key1 = seconds) {
