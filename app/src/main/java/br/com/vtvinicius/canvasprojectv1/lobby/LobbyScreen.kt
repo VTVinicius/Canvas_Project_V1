@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -58,7 +59,7 @@ fun LobbyScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_4") }, text = "Aula 4")
+                DefaultButton(onClick = { navController.navigate("lesson_4") }, text = "Aula 4", colors = Color.LightGray)
 
                 Spacer(modifier = Modifier.height(24.dp))
 
@@ -69,7 +70,7 @@ fun LobbyScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_6") }, text = "Aula 6")
+                DefaultButton(onClick = { navController.navigate("lesson_6") }, text = "Aula 6", colors = Color.LightGray)
 
                 Spacer(modifier = Modifier.height(24.dp))
 
@@ -97,15 +98,15 @@ fun LobbyScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_12") }, text = "Aula 12")
+                DefaultButton(onClick = { navController.navigate("lesson_12") }, text = "Aula 12", colors = Color.LightGray)
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_13") }, text = "Aula 13")
+                DefaultButton(onClick = { navController.navigate("lesson_13") }, text = "Aula 13", colors = Color.LightGray)
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_14") }, text = "Aula 14")
+                DefaultButton(onClick = { navController.navigate("lesson_14") }, text = "Aula 14", colors = Color.LightGray)
 
                 Spacer(modifier = Modifier.height(24.dp))
 
@@ -113,7 +114,7 @@ fun LobbyScreen(navController: NavController) {
 
                 Spacer(modifier = Modifier.height(24.dp))
 
-                DefaultButton(onClick = { navController.navigate("lesson_16") }, text = "Aula 16")
+                DefaultButton(onClick = { navController.navigate("lesson_16") }, text = "Aula 16", colors = Color.LightGray)
 
                 Spacer(modifier = Modifier.height(24.dp))
             }
