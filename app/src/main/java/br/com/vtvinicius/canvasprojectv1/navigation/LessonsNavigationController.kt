@@ -11,6 +11,8 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson11.ClipPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.EffectPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson13.GenderScreen
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson14.TicTacToeScreen
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson15.ImageInCanvas
+import br.com.vtvinicius.canvasprojectv1.lessons.lesson16.ImageIntersection
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson2.BallClickerGame
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson3.BasicCanvasText
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson4.WeightPickerScreen
@@ -80,6 +82,12 @@ fun LessonsNavigationController() {
         }
         composable("lesson_14") {
             TicTacToeScreen()
+        }
+        composable("lesson_15") {
+            ImageInCanvas()
+        }
+        composable("lesson_16") {
+            ImageIntersection()
         }
     }
 
