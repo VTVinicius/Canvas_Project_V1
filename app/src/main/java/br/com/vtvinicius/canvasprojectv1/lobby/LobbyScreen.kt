@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.EffectPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson12.LobbyBackground
 import br.com.vtvinicius.canvasprojectv1.ui.components.DefaultButton
 
@@ -103,6 +102,10 @@ fun LobbyScreen(navController: NavController) {
                 Spacer(modifier = Modifier.height(24.dp))
 
                 DefaultButton(onClick = { navController.navigate("lesson_13") }, text = "Aula 13")
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                DefaultButton(onClick = { navController.navigate("lesson_14") }, text = "Aula 14")
 
                 Spacer(modifier = Modifier.height(24.dp))
             }

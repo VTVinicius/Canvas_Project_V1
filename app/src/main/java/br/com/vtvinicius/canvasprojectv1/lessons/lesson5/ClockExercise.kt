@@ -46,34 +46,6 @@ fun ClockExercise(
     var angle by remember {
         mutableStateOf(0f)
     }
-    var angle1 by remember {
-        mutableStateOf(30f)
-    }
-    var angle2 by remember {
-        mutableStateOf(90f)
-    }
-    var angle3 by remember {
-        mutableStateOf(120f)
-    }
-
-
-
-    LaunchedEffect(key1 = angle1) {
-        delay(1000L)
-        angle1 += 6f
-    }
-
-    LaunchedEffect(key1 = angle3) {
-        delay(3000L)
-        angle3 += 6f
-    }
-
-    LaunchedEffect(key1 = angle2) {
-        delay(5000L)
-        angle2 += 6f
-    }
-
-
 
     Canvas(modifier = modifier) {
 
