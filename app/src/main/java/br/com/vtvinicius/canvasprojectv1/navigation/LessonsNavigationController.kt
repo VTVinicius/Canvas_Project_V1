@@ -23,6 +23,7 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.CubicPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.QuadraticPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson9.PathOperation
 import br.com.vtvinicius.canvasprojectv1.lobby.LobbyScreen
+import br.com.vtvinicius.canvasprojectv1.projects.line_graph.LineGraphScreen
 
 @Composable
 fun LessonsNavigationController() {
@@ -88,6 +89,9 @@ fun LessonsNavigationController() {
         }
         composable("lesson_16") {
             ImageIntersection()
+        }
+        composable("lesson_17") {
+            LineGraphScreen()
         }
     }
 
