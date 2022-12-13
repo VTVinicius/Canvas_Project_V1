@@ -1,7 +1,6 @@
 package br.com.vtvinicius.canvasprojectv1.projects.line_graph
 
 import androidx.compose.runtime.Composable
-import br.com.vtvinicius.canvasprojectv1.projects.grafs.LineGraph
 
 @Composable
 fun LineGraphScreen() {

@@ -1,18 +1,20 @@
-package br.com.vtvinicius.canvasprojectv1.projects.grafs
+package br.com.vtvinicius.canvasprojectv1.projects.line_graph
 
 import android.content.res.Configuration
 import android.graphics.Paint
-import android.graphics.drawable.GradientDrawable.Orientation
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -27,7 +29,6 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import br.com.vtvinicius.canvasprojectv1.projects.line_graph.Points
 import kotlin.math.PI
 import kotlin.math.atan2
 
@@ -36,6 +37,8 @@ fun LineGraph(
     modifier: Modifier = Modifier,
     pointsList: MutableList<Points> = mutableListOf(),
 ) {
+
+
 
     val leftSide = 70.dp
 
@@ -53,6 +56,10 @@ fun XLine(leftSide: Dp) {
         Animatable(initialValue = 0f)
     }
 
+    var centerY by remember {
+        mutableStateOf(0.dp)
+    }
+
     LaunchedEffect(key1 = true) {
         pathPortionX.animateTo(
             targetValue = 1f,
@@ -62,10 +69,10 @@ fun XLine(leftSide: Dp) {
         )
     }
 
-    Canvas(modifier = Modifier.height(500.dp).fillMaxWidth()) {
+    Canvas(modifier = Modifier.fillMaxSize().padding(end = 20.dp)) {
         val pathX = Path().apply {
             moveTo(leftSide.toPx(), center.y.dp.toPx())
-            lineTo((center.x + center.x - 20), center.y.dp.toPx())
+            lineTo((center.x + center.x), center.y.dp.toPx())
         }
         val outPathX = android.graphics.Path()
         val posX = FloatArray(2)
@@ -115,11 +122,11 @@ fun YLine(leftSide: Dp) {
         )
     }
 
-    Canvas(modifier = Modifier.height(500.dp)) {
+    Canvas(modifier = Modifier.fillMaxHeight().padding(top = 20.dp, bottom = 2.dp)) {
 
         val pathY = Path().apply {
             moveTo(leftSide.toPx(), center.y.dp.toPx())
-            lineTo(leftSide.toPx(), size.height - size.height + 20)
+            lineTo(leftSide.toPx(), size.height - size.height)
         }
         val outPathY = android.graphics.Path()
         val posY = FloatArray(2)
