@@ -66,6 +66,7 @@ fun ClockExercise(
                     strokeWidth = scaleWidth.toPx()
                     color = Color.WHITE
                     setStyle(Paint.Style.FILL_AND_STROKE)
+                    Paint.ANTI_ALIAS_FLAG
                     setShadowLayer(
                         50f,
                         0f,
