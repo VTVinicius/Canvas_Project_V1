@@ -11,20 +11,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import kotlin.math.roundToInt
-import kotlin.random.Random
+import kotlinx.coroutines.delay
 
 @Composable
 fun SnakeGameScreen() {
 
     BallClicker()
-
-}
-
-
-@Composable
-fun Snake() {
-
 
 }
 
@@ -59,103 +51,140 @@ fun BallClicker(
 
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        var ballPosition by remember {
-            mutableStateOf(
-                snakeMovement(
-                    offset = offset,
-                    isGoingUp = isGoingUp,
-                    isGoingDown = isGoingDown,
-                    isGoingLeft = isGoingLeft,
-                    isGoingRight = isGoingRight
-                )
-            )
+
+
+        val maxHeigth by remember {
+            mutableStateOf(constraints.maxHeight.toFloat())
         }
+
+        val maxWidth by remember {
+            mutableStateOf(constraints.maxWidth.toFloat())
+        }
+
 
         Row(Modifier.fillMaxWidth()) {
 
             Button(onClick = {
-                offset =   snakeMovement(
-                    isGoingUp = true,
-                    isGoingDown = false,
-                    isGoingLeft = false,
-                    isGoingRight = false,
-                    offset = offset
+                isGoingUp = true
+                isGoingDown = false
+                isGoingLeft = false
+                isGoingRight = false
+                offset = snakeMovement(
+                    isGoingUp = isGoingUp,
+                    isGoingDown = isGoingDown,
+                    isGoingLeft = isGoingLeft,
+                    isGoingRight = isGoingRight,
+                    offset = offset,
+                    maxHeigth = maxHeigth,
+                    maxWidth = maxWidth
                 )
             }) {
                 Text(text = "UP")
             }
             Button(onClick = {
-                offset =  snakeMovement(
-                    isGoingUp = false,
-                    isGoingDown = true,
-                    isGoingLeft = false,
-                    isGoingRight = false,
-                    offset = offset
+                isGoingUp = false
+                isGoingDown = true
+                isGoingLeft = false
+                isGoingRight = false
+                offset = snakeMovement(
+                    isGoingUp = isGoingUp,
+                    isGoingDown = isGoingDown,
+                    isGoingLeft = isGoingLeft,
+                    isGoingRight = isGoingRight,
+                    offset = offset,
+                    maxHeigth = maxHeigth,
+                    maxWidth = maxWidth
                 )
             }) {
                 Text(text = "Down")
             }
             Button(onClick = {
-                offset =   snakeMovement(
-                    isGoingUp = false,
-                    isGoingDown = false,
-                    isGoingLeft = true,
-                    isGoingRight = false,
-                    offset = offset
+                isGoingUp = false
+                isGoingDown = false
+                isGoingLeft = true
+                isGoingRight = false
+                offset = snakeMovement(
+                    isGoingUp = isGoingUp,
+                    isGoingDown = isGoingDown,
+                    isGoingLeft = isGoingLeft,
+                    isGoingRight = isGoingRight,
+                    offset = offset,
+                            maxHeigth = maxHeigth,
+                    maxWidth = maxWidth
                 )
+
             }) {
                 Text(text = "Left")
             }
             Button(onClick = {
+                isGoingUp = false
+                isGoingDown = false
+                isGoingLeft = false
+                isGoingRight = true
                 offset = snakeMovement(
-                    isGoingUp = false,
-                    isGoingDown = false,
-                    isGoingLeft = false,
-                    isGoingRight = true,
-                    offset = offset
+                    isGoingUp = isGoingUp,
+                    isGoingDown = isGoingDown,
+                    isGoingLeft = isGoingLeft,
+                    isGoingRight = isGoingRight,
+                    offset = offset,
+                    maxHeigth = maxHeigth,
+                    maxWidth = maxWidth
                 )
+
             }) {
                 Text(text = "Right")
             }
         }
 
 
-        LaunchedEffect(key1 = isGoingDown) {
+        LaunchedEffect(key1 = offset, key2 = isGoingDown) {
+            delay(100)
             offset = snakeMovement(
                 isGoingUp = isGoingUp,
                 isGoingDown = isGoingDown,
                 isGoingLeft = isGoingLeft,
                 isGoingRight = isGoingRight,
-                offset = offset
+                offset = offset,
+                maxHeigth = maxHeigth,
+                maxWidth = maxWidth
             )
         }
 
-        LaunchedEffect(key1 = isGoingRight) {
+        LaunchedEffect(key1 = offset, key2 = isGoingDown) {
+            delay(100)
             offset = snakeMovement(
                 isGoingUp = isGoingUp,
                 isGoingDown = isGoingDown,
                 isGoingLeft = isGoingLeft,
                 isGoingRight = isGoingRight,
-                offset = offset
+                offset = offset,
+                maxHeigth = maxHeigth,
+                maxWidth = maxWidth
             )
         }
 
-        LaunchedEffect(key1 = isGoingLeft) {
+        LaunchedEffect(key1 = offset, key2 = isGoingDown) {
+            delay(100)
             offset = snakeMovement(
                 isGoingUp = isGoingUp,
                 isGoingDown = isGoingDown,
                 isGoingLeft = isGoingLeft,
                 isGoingRight = isGoingRight,
-                offset = offset
+                offset = offset,
+                maxHeigth = maxHeigth,
+                maxWidth = maxWidth
             )
         }
-        LaunchedEffect(key1 = isGoingUp) {
+        LaunchedEffect(key1 = offset, key2 = isGoingRight) {
+            delay(100)
             offset = snakeMovement(
                 isGoingUp = isGoingUp,
                 isGoingDown = isGoingDown,
                 isGoingLeft = isGoingLeft,
                 isGoingRight = isGoingRight,
-                offset = offset
+                offset = offset,
+                maxHeigth = maxHeigth,
+                maxWidth = maxWidth
             )
         }
 
@@ -174,50 +203,72 @@ fun BallClicker(
 }
 
 
-private fun randomOffset(radius: Float, width: Int, height: Int): Offset {
-    return Offset(
-        x = Random.nextInt(radius.roundToInt(), width - radius.roundToInt()).toFloat(),
-        y = Random.nextInt(radius.roundToInt(), height - radius.roundToInt()).toFloat()
-    )
-}
-
-
 private fun snakeMovement(
     isGoingUp: Boolean,
     isGoingDown: Boolean,
     isGoingRight: Boolean,
     isGoingLeft: Boolean,
     offset: Offset,
+    maxHeigth: Float,
+    maxWidth: Float,
 ): Offset {
 
     return when {
         isGoingUp -> {
-            return Offset(
-                x = offset.x,
-                y = offset.y - 10f
-            )
+            return if (offset.y <= 0f) {
+                Offset(
+                    x = offset.x,
+                    y = offset.y
+                )
+            } else {
+                Offset(
+                    x = offset.x,
+                    y = offset.y - 5f
+                )
+            }
         }
         isGoingDown -> {
-            return Offset(
-                x = offset.x,
-                y = offset.y + 10f
-            )
+            return if (offset.y >= maxHeigth) {
+                Offset(
+                    x = offset.x,
+                    y = offset.y
+                )
+            } else {
+                Offset(
+                    x = offset.x,
+                    y = offset.y + 5f
+                )
+            }
         }
         isGoingRight -> {
-            return Offset(
-                x = offset.x + 10f,
-                y = offset.y
-            )
+            return if (offset.x >= maxWidth) {
+                Offset(
+                    x = offset.x,
+                    y = offset.y
+                )
+            } else {
+                Offset(
+                    x = offset.x + 5f,
+                    y = offset.y
+                )
+            }
         }
         isGoingLeft -> {
-            return Offset(
-                x = offset.x - 10f,
-                y = offset.y
-            )
+            return if (offset.x <= 0f) {
+                Offset(
+                    x = offset.x,
+                    y = offset.y
+                )
+            } else {
+                Offset(
+                    x = offset.x - 5f,
+                    y = offset.y
+                )
+            }
         }
-        else -> {
-            return offset
+            else -> {
+                return offset
+            }
         }
     }
-}
 
