@@ -8,7 +8,6 @@ import br.com.vtvinicius.canvasprojectv1.projects.grafs.LineGraph
 import br.com.vtvinicius.canvasprojectv1.projects.line_graph.Points
 import br.com.vtvinicius.canvasprojectv1.projects.snake.SnakeGameScreen
 import br.com.vtvinicius.canvasprojectv1.ui.theme.ApplicationTheme
-import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

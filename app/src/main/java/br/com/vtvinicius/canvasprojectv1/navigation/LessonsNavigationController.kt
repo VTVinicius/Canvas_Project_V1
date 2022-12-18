@@ -90,7 +90,7 @@ fun LessonsNavigationController() {
         composable("lesson_16") {
             ImageIntersection()
         }
-        composable("lesson_17") {
+        composable("pratica_1") {
             LineGraphScreen()
         }
     }
