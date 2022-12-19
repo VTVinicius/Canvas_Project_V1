@@ -2,6 +2,8 @@ package br.com.vtvinicius.canvasprojectv1.projects.snake
 
 import androidx.compose.animation.core.animateOffsetAsState
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -20,12 +22,30 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
+import kotlin.math.pow
+import kotlin.math.roundToInt
+import kotlin.math.sqrt
+import kotlin.random.Random
 
 @Composable
 fun SnakeGameScreen() {
 
-    BallClicker()
+    var points by remember {
+        mutableStateOf(0)
+    }
+
+    BallClicker(
+        enabled = true,
+        onBallClick = {
+            points++
+        },
+        points = points
+    )
 
 }
 
@@ -33,10 +53,11 @@ fun SnakeGameScreen() {
 @Composable
 fun BallClicker(
     radius: Float =
-        60f,
-    enabled: Boolean = false,
+        30f,
+    enabled: Boolean = true,
     ballColor: Color = Color.Red,
     onBallClick: () -> Unit = {},
+    points: Int = 0
 ) {
 
 
@@ -64,6 +85,18 @@ fun BallClicker(
     var maxWidth by remember {
         mutableStateOf(1000f)
     }
+
+    var ballPosition by remember {
+        mutableStateOf(
+            randomOffset(
+                radius = radius,
+                width = maxWidth.toInt(),
+                height = maxHeigth.toInt()
+            )
+        )
+    }
+
+    val delayTime: Long = 700
 
     val newOffset by animateOffsetAsState(targetValue = offset)
 
@@ -145,6 +178,11 @@ fun BallClicker(
             }) {
                 Text(text = "Right")
             }
+            Text(
+                text = "Points: $points",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
         }
 
         BoxWithConstraints(
@@ -165,7 +203,7 @@ fun BallClicker(
 
 
                 LaunchedEffect(key1 = offset, key2 = isGoingDown) {
-                    delay(100)
+                    delay(delayTime)
                     offset = snakeMovement(
                         isGoingUp = isGoingUp,
                         isGoingDown = isGoingDown,
@@ -179,7 +217,7 @@ fun BallClicker(
                 }
 
                 LaunchedEffect(key1 = offset, key2 = isGoingDown) {
-                    delay(100)
+                    delay(delayTime)
                     offset = snakeMovement(
                         isGoingUp = isGoingUp,
                         isGoingDown = isGoingDown,
@@ -193,7 +231,7 @@ fun BallClicker(
                 }
 
                 LaunchedEffect(key1 = offset, key2 = isGoingDown) {
-                    delay(100)
+                    delay(delayTime)
                     offset = snakeMovement(
                         isGoingUp = isGoingUp,
                         isGoingDown = isGoingDown,
@@ -206,7 +244,7 @@ fun BallClicker(
                     )
                 }
                 LaunchedEffect(key1 = offset, key2 = isGoingRight) {
-                    delay(100)
+                    delay(delayTime)
                     offset = snakeMovement(
                         isGoingUp = isGoingUp,
                         isGoingDown = isGoingDown,
@@ -222,6 +260,7 @@ fun BallClicker(
                 Canvas(
                     modifier = Modifier
                         .fillMaxSize()
+                        .background(Color.Transparent)
                 ) {
                     drawCircle(
                         color = ballColor,
@@ -229,13 +268,35 @@ fun BallClicker(
                         center = newOffset
 
                     )
+
+                    drawCircle(
+                        color = Color.Green,
+                        radius = radius,
+                        center = ballPosition
+                    )
                 }
+
+
+                //when the newOffset is between the ballPosition and the radius of the ball
+                //the ballPosition is updated to a new random position
+                if (newOffset.x in ballPosition.x - radius..ballPosition.x + radius && newOffset.y in ballPosition.y - radius..ballPosition.y + radius) {
+                    ballPosition = randomOffset(
+                        radius = radius,
+                        width = maxWidth.toInt(),
+                        height = maxHeigth.toInt()
+                    )
+                    onBallClick()
+                }
+                }
+
+
+
+
             }
         }
-    }
+
 
 }
-
 
 private fun snakeMovement(
     isGoingUp: Boolean,
@@ -259,7 +320,7 @@ private fun snakeMovement(
             } else {
                 Offset(
                     x = offset.x,
-                    y = offset.y - 5f
+                    y = offset.y - radius / 2
                 )
             }
         }
@@ -273,7 +334,7 @@ private fun snakeMovement(
             } else {
                 Offset(
                     x = offset.x,
-                    y = offset.y + 5f
+                    y = offset.y + radius / 2
                 )
             }
         }
@@ -286,7 +347,7 @@ private fun snakeMovement(
                 )
             } else {
                 Offset(
-                    x = offset.x + 5f,
+                    x = offset.x + radius / 2,
                     y = offset.y
                 )
             }
@@ -300,7 +361,7 @@ private fun snakeMovement(
                 )
             } else {
                 Offset(
-                    x = offset.x - 5f,
+                    x = offset.x - radius / 2,
                     y = offset.y
                 )
             }
@@ -310,5 +371,13 @@ private fun snakeMovement(
             return offset
         }
     }
+}
+
+
+private fun randomOffset(radius: Float, width: Int, height: Int): Offset {
+    return Offset(
+        x = Random.nextInt(radius.roundToInt(), width - radius.roundToInt()).toFloat(),
+        y = Random.nextInt(radius.roundToInt(), height - radius.roundToInt()).toFloat()
+    )
 }
 
