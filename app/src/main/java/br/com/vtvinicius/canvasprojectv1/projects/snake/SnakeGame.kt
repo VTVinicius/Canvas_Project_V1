@@ -1,16 +1,21 @@
 package br.com.vtvinicius.canvasprojectv1.projects.snake
 
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.animateOffsetAsState
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -52,22 +57,19 @@ fun BallClicker(
         mutableStateOf(Offset(400f, 400f))
     }
 
+    var maxHeigth by remember {
+        mutableStateOf(1000f)
+    }
+
+    var maxWidth by remember {
+        mutableStateOf(1000f)
+    }
 
     val newOffset by animateOffsetAsState(targetValue = offset)
 
-    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+    Column(Modifier.fillMaxSize()) {
 
-
-        val maxHeigth by remember {
-            mutableStateOf(constraints.maxHeight.toFloat())
-        }
-
-        val maxWidth by remember {
-            mutableStateOf(constraints.maxWidth.toFloat())
-        }
-
-
-        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom) {
+        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom) {
 
             Button(onClick = {
                 isGoingUp = true
@@ -100,7 +102,7 @@ fun BallClicker(
                     offset = offset,
                     maxHeigth = maxHeigth,
                     maxWidth = maxWidth,
-                            radius = radius
+                    radius = radius
                 )
             }) {
                 Text(text = "Down")
@@ -116,7 +118,7 @@ fun BallClicker(
                     isGoingLeft = isGoingLeft,
                     isGoingRight = isGoingRight,
                     offset = offset,
-                            maxHeigth = maxHeigth,
+                    maxHeigth = maxHeigth,
                     maxWidth = maxWidth,
                     radius = radius
                 )
@@ -145,76 +147,94 @@ fun BallClicker(
             }
         }
 
-
-        LaunchedEffect(key1 = offset, key2 = isGoingDown) {
-            delay(100)
-            offset = snakeMovement(
-                isGoingUp = isGoingUp,
-                isGoingDown = isGoingDown,
-                isGoingLeft = isGoingLeft,
-                isGoingRight = isGoingRight,
-                offset = offset,
-                maxHeigth = maxHeigth,
-                maxWidth = maxWidth,
-                radius = radius
-            )
-        }
-
-        LaunchedEffect(key1 = offset, key2 = isGoingDown) {
-            delay(100)
-            offset = snakeMovement(
-                isGoingUp = isGoingUp,
-                isGoingDown = isGoingDown,
-                isGoingLeft = isGoingLeft,
-                isGoingRight = isGoingRight,
-                offset = offset,
-                maxHeigth = maxHeigth,
-                maxWidth = maxWidth,
-                radius = radius
-            )
-        }
-
-        LaunchedEffect(key1 = offset, key2 = isGoingDown) {
-            delay(100)
-            offset = snakeMovement(
-                isGoingUp = isGoingUp,
-                isGoingDown = isGoingDown,
-                isGoingLeft = isGoingLeft,
-                isGoingRight = isGoingRight,
-                offset = offset,
-                maxHeigth = maxHeigth,
-                maxWidth = maxWidth,
-                radius = radius
-            )
-        }
-        LaunchedEffect(key1 = offset, key2 = isGoingRight) {
-            delay(100)
-            offset = snakeMovement(
-                isGoingUp = isGoingUp,
-                isGoingDown = isGoingDown,
-                isGoingLeft = isGoingLeft,
-                isGoingRight = isGoingRight,
-                offset = offset,
-                maxHeigth = maxHeigth,
-                maxWidth = maxWidth,
-                radius = radius
-            )
-        }
-
-        Canvas(
-            modifier = Modifier
-                .fillMaxSize()
+        BoxWithConstraints(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            drawCircle(
-                color = ballColor,
-                radius = radius,
-                center = newOffset
 
-            )
+
+            maxHeigth = constraints.maxHeight.toFloat()
+            maxWidth = constraints.maxWidth.toFloat()
+
+
+            Row(
+                Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.Center,
+                verticalAlignment = Alignment.Bottom
+            ) {
+
+
+                LaunchedEffect(key1 = offset, key2 = isGoingDown) {
+                    delay(100)
+                    offset = snakeMovement(
+                        isGoingUp = isGoingUp,
+                        isGoingDown = isGoingDown,
+                        isGoingLeft = isGoingLeft,
+                        isGoingRight = isGoingRight,
+                        offset = offset,
+                        maxHeigth = maxHeigth,
+                        maxWidth = maxWidth,
+                        radius = radius
+                    )
+                }
+
+                LaunchedEffect(key1 = offset, key2 = isGoingDown) {
+                    delay(100)
+                    offset = snakeMovement(
+                        isGoingUp = isGoingUp,
+                        isGoingDown = isGoingDown,
+                        isGoingLeft = isGoingLeft,
+                        isGoingRight = isGoingRight,
+                        offset = offset,
+                        maxHeigth = maxHeigth,
+                        maxWidth = maxWidth,
+                        radius = radius
+                    )
+                }
+
+                LaunchedEffect(key1 = offset, key2 = isGoingDown) {
+                    delay(100)
+                    offset = snakeMovement(
+                        isGoingUp = isGoingUp,
+                        isGoingDown = isGoingDown,
+                        isGoingLeft = isGoingLeft,
+                        isGoingRight = isGoingRight,
+                        offset = offset,
+                        maxHeigth = maxHeigth,
+                        maxWidth = maxWidth,
+                        radius = radius
+                    )
+                }
+                LaunchedEffect(key1 = offset, key2 = isGoingRight) {
+                    delay(100)
+                    offset = snakeMovement(
+                        isGoingUp = isGoingUp,
+                        isGoingDown = isGoingDown,
+                        isGoingLeft = isGoingLeft,
+                        isGoingRight = isGoingRight,
+                        offset = offset,
+                        maxHeigth = maxHeigth,
+                        maxWidth = maxWidth,
+                        radius = radius
+                    )
+                }
+
+                Canvas(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    drawCircle(
+                        color = ballColor,
+                        radius = radius,
+                        center = newOffset
+
+                    )
+                }
+            }
         }
     }
-}
 
+}
 
 
 private fun snakeMovement(
@@ -227,7 +247,6 @@ private fun snakeMovement(
     maxWidth: Float,
     radius: Float
 ): Offset {
-
 
 
     return when {
@@ -244,6 +263,7 @@ private fun snakeMovement(
                 )
             }
         }
+
         isGoingDown -> {
             return if (offset.y >= maxHeigth - radius) {
                 Offset(
@@ -257,8 +277,9 @@ private fun snakeMovement(
                 )
             }
         }
+
         isGoingRight -> {
-            return if (offset.x >= maxWidth -radius) {
+            return if (offset.x >= maxWidth - radius) {
                 Offset(
                     x = offset.x,
                     y = offset.y
@@ -270,6 +291,7 @@ private fun snakeMovement(
                 )
             }
         }
+
         isGoingLeft -> {
             return if (offset.x <= radius) {
                 Offset(
@@ -283,9 +305,10 @@ private fun snakeMovement(
                 )
             }
         }
-            else -> {
-                return offset
-            }
+
+        else -> {
+            return offset
         }
     }
+}
 
