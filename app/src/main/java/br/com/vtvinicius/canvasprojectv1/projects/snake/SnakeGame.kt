@@ -76,7 +76,8 @@ fun BallClicker(
                     isGoingRight = isGoingRight,
                     offset = offset,
                     maxHeigth = maxHeigth,
-                    maxWidth = maxWidth
+                    maxWidth = maxWidth,
+                    radius = radius
                 )
             }) {
                 Text(text = "UP")
@@ -93,7 +94,8 @@ fun BallClicker(
                     isGoingRight = isGoingRight,
                     offset = offset,
                     maxHeigth = maxHeigth,
-                    maxWidth = maxWidth
+                    maxWidth = maxWidth,
+                            radius = radius
                 )
             }) {
                 Text(text = "Down")
@@ -110,7 +112,8 @@ fun BallClicker(
                     isGoingRight = isGoingRight,
                     offset = offset,
                             maxHeigth = maxHeigth,
-                    maxWidth = maxWidth
+                    maxWidth = maxWidth,
+                    radius = radius
                 )
 
             }) {
@@ -128,7 +131,8 @@ fun BallClicker(
                     isGoingRight = isGoingRight,
                     offset = offset,
                     maxHeigth = maxHeigth,
-                    maxWidth = maxWidth
+                    maxWidth = maxWidth,
+                    radius = radius
                 )
 
             }) {
@@ -146,7 +150,8 @@ fun BallClicker(
                 isGoingRight = isGoingRight,
                 offset = offset,
                 maxHeigth = maxHeigth,
-                maxWidth = maxWidth
+                maxWidth = maxWidth,
+                radius = radius
             )
         }
 
@@ -159,7 +164,8 @@ fun BallClicker(
                 isGoingRight = isGoingRight,
                 offset = offset,
                 maxHeigth = maxHeigth,
-                maxWidth = maxWidth
+                maxWidth = maxWidth,
+                radius = radius
             )
         }
 
@@ -172,7 +178,8 @@ fun BallClicker(
                 isGoingRight = isGoingRight,
                 offset = offset,
                 maxHeigth = maxHeigth,
-                maxWidth = maxWidth
+                maxWidth = maxWidth,
+                radius = radius
             )
         }
         LaunchedEffect(key1 = offset, key2 = isGoingRight) {
@@ -184,7 +191,8 @@ fun BallClicker(
                 isGoingRight = isGoingRight,
                 offset = offset,
                 maxHeigth = maxHeigth,
-                maxWidth = maxWidth
+                maxWidth = maxWidth,
+                radius = radius
             )
         }
 
@@ -211,11 +219,12 @@ private fun snakeMovement(
     offset: Offset,
     maxHeigth: Float,
     maxWidth: Float,
+    radius: Float
 ): Offset {
 
     return when {
         isGoingUp -> {
-            return if (offset.y <= 0f) {
+            return if (offset.y <= radius) {
                 Offset(
                     x = offset.x,
                     y = offset.y
@@ -228,7 +237,7 @@ private fun snakeMovement(
             }
         }
         isGoingDown -> {
-            return if (offset.y >= maxHeigth) {
+            return if (offset.y >= maxHeigth - radius) {
                 Offset(
                     x = offset.x,
                     y = offset.y
@@ -241,7 +250,7 @@ private fun snakeMovement(
             }
         }
         isGoingRight -> {
-            return if (offset.x >= maxWidth) {
+            return if (offset.x >= maxWidth -radius) {
                 Offset(
                     x = offset.x,
                     y = offset.y
@@ -254,7 +263,7 @@ private fun snakeMovement(
             }
         }
         isGoingLeft -> {
-            return if (offset.x <= 0f) {
+            return if (offset.x <= radius) {
                 Offset(
                     x = offset.x,
                     y = offset.y
