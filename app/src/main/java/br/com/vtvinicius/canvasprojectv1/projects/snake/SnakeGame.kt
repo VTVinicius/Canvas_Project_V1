@@ -1,6 +1,9 @@
 package br.com.vtvinicius.canvasprojectv1.projects.snake
 
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.animateOffsetAsState
 import androidx.compose.foundation.Canvas
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
@@ -49,6 +53,7 @@ fun BallClicker(
     }
 
 
+    val newOffset by animateOffsetAsState(targetValue = offset)
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
 
@@ -62,7 +67,7 @@ fun BallClicker(
         }
 
 
-        Row(Modifier.fillMaxWidth()) {
+        Row(Modifier.fillMaxSize(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom) {
 
             Button(onClick = {
                 isGoingUp = true
@@ -203,12 +208,13 @@ fun BallClicker(
             drawCircle(
                 color = ballColor,
                 radius = radius,
-                center = offset
+                center = newOffset
 
             )
         }
     }
 }
+
 
 
 private fun snakeMovement(
@@ -221,6 +227,8 @@ private fun snakeMovement(
     maxWidth: Float,
     radius: Float
 ): Offset {
+
+
 
     return when {
         isGoingUp -> {
