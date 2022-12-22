@@ -121,6 +121,10 @@ fun LobbyScreen(navController: NavController) {
                 DefaultButton(onClick = { navController.navigate("pratica_1") }, text = "Pratica 01", colors = Color.Gray)
 
                 Spacer(modifier = Modifier.height(24.dp))
+
+                DefaultButton(onClick = { navController.navigate("snake") }, text = "Snake", colors = Color.Gray)
+
+                Spacer(modifier = Modifier.height(24.dp))
             }
         }
     )

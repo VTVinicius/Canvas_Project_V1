@@ -1,9 +1,9 @@
 package br.com.vtvinicius.canvasprojectv1.projects.snake
 
 import androidx.compose.animation.core.animateOffsetAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -22,14 +22,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
-import kotlin.math.pow
 import kotlin.math.roundToInt
-import kotlin.math.sqrt
 import kotlin.random.Random
 
 @Composable
@@ -41,7 +37,7 @@ fun SnakeGameScreen() {
 
     BallClicker(
         enabled = true,
-        onBallClick = {
+        onBallTrigger = {
             points++
         },
         points = points
@@ -56,7 +52,7 @@ fun BallClicker(
         30f,
     enabled: Boolean = true,
     ballColor: Color = Color.Red,
-    onBallClick: () -> Unit = {},
+    onBallTrigger: () -> Unit = {},
     points: Int = 0
 ) {
 
@@ -96,13 +92,22 @@ fun BallClicker(
         )
     }
 
-    val delayTime: Long = 700
+    val delayTime: Long = 500
 
-    val newOffset by animateOffsetAsState(targetValue = offset)
+    val newOffset by animateOffsetAsState(
+        targetValue = offset,
+        tween(
+            durationMillis = (delayTime / 2).toInt()
+        )
+    )
 
     Column(Modifier.fillMaxSize()) {
 
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center, verticalAlignment = Alignment.Bottom) {
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.Bottom
+        ) {
 
             Button(onClick = {
                 isGoingUp = true
@@ -285,15 +290,13 @@ fun BallClicker(
                         width = maxWidth.toInt(),
                         height = maxHeigth.toInt()
                     )
-                    onBallClick()
+                    onBallTrigger()
                 }
-                }
-
-
-
-
             }
+
+
         }
+    }
 
 
 }

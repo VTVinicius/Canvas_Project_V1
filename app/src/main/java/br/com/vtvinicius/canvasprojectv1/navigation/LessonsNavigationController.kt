@@ -24,6 +24,7 @@ import br.com.vtvinicius.canvasprojectv1.lessons.lesson8.QuadraticPath
 import br.com.vtvinicius.canvasprojectv1.lessons.lesson9.PathOperation
 import br.com.vtvinicius.canvasprojectv1.lobby.LobbyScreen
 import br.com.vtvinicius.canvasprojectv1.projects.line_graph.LineGraphScreen
+import br.com.vtvinicius.canvasprojectv1.projects.snake.SnakeGameScreen
 
 @Composable
 fun LessonsNavigationController() {
@@ -93,6 +94,9 @@ fun LessonsNavigationController() {
         composable("pratica_1") {
             LineGraphScreen()
         }
+    composable ("snake") {
+        SnakeGameScreen()
     }
+}
 
 }
